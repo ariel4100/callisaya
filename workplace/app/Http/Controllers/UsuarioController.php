@@ -14,7 +14,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::orderBy('user_birthday', 'DESC')->get();
+        $usuarios = Usuario::orderBy('user_birthday', 'DESC')->paginate(5);
         return view('usuarios', compact('usuarios'));
     }
 
