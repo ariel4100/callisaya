@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <title>ejercicio</title>
+</head>
+<body>
+<?php echo $__env->make('app.partials.nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo $__env->yieldContent('content'); ?>
+
+</body>
+</html>

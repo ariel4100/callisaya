@@ -1,0 +1,44 @@
+<?php $__env->startSection('content'); ?>
+    <section class="container my-5">
+        <h1>Lista de Remitos</h1>
+        <div class="row">
+            <div class="col-md-12">
+            <a href="remito/create" class="btn btn-success my-3">+ crear nuevo</a>
+                <table class="table">
+                    <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#codigo</th>
+                        <th scope="col">proveedor n°</th>
+                        <th scope="col">monto total</th>
+                        <th scope="col">fecha de emision</th>
+                        <th scope="col">acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach($remitos as $remito): ?>
+                    <tr>
+                        <td><?php echo e($remito->id); ?></td>
+                        <td><?php echo e($remito->proveedor->id); ?></td>
+                        <td><?php echo e($remito->monto_total); ?></td>
+                        <td><?php echo e($remito->fecha_emision); ?></td>
+                        <td class="row">
+                            <a href="remito/<?php echo e($remito->id); ?>" class="btn btn-sm btn-info">ver</a>
+                            <a href="remito/<?php echo e($remito->id); ?>/edit" class="btn btn-sm btn-warning mx-2">editar</a>
+                            <form action="<?php echo e(route('remito.destroy',$remito->id)); ?>" method="post">
+                                <?php echo e(method_field('DELETE')); ?>
+
+                                <?php echo e(csrf_field()); ?>
+
+                                <button type="submit" class="btn btn-danger btn-sm" onclick=" return confirm('¿desea eliminarlo?')">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app.partials.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
